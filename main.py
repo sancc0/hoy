@@ -3,27 +3,27 @@
 import random
 import string
 
-def generar_contraseña(longitud, mayuscula, minuscula, numero, otro):
+def tucontraseña(longitud, mayuscula, minuscula, numero, otro):
     caracteres = ""
 
-if mayuscula:
-    caracteres += string.ascii_uppercase  # Mayúsculas
-if minuscula:
-    caracteres += string.ascii_lowercase  # Minúsculas
-if numero:
-    caracteres += string.digits  # Números
-if otro:
-    caracteres += string.punctuation  # Símbolos
+    if mayuscula:
+        caracteres += string.ascii_uppercase  # Mayúsculas
+    if minuscula:
+        caracteres += string.ascii_lowercase  # Minúsculas
+    if numero:
+         caracteres += string.digits  # Números
+    if otro:
+      caracteres += string.punctuation  # Símbolos
 
 # Asegurar que la contraseña tenga al menos un carácter de cada tipo seleccionado
-if mayusculas:
-    caracteres += random.choice(string.ascii_uppercase)
-if minusculas:
-    caracteres += random.choice(string.ascii_lowercase)
-if alfanumericos:
-    caracteres += random.choice(string.digits)
-if simbolos:
-    caracteres += random.choice(string.punctuation)
+    if mayuscula:
+     caracteres += random.choice(string.ascii_uppercase)
+    if minuscula:
+        caracteres += random.choice(string.ascii_lowercase)
+    if numero:
+        caracteres += random.choice(string.digits)
+    if otro:
+        caracteres += random.choice(string.punctuation)
 
 # Si el número de caracteres es mayor que 4, se mezcla la longitud especificada
 contraseña = ''.join(random.choice(caracteres) for i in range(longitud))
@@ -54,27 +54,27 @@ while True:
 
     # Variables para las configuraciones
     longitud = 12  # Longitud por defecto
-    mayusculas = False
-    minusculas = False
-    alfanumericos = False
-    simbolos = False
+    mayuscula = False
+    minuscula = False
+    numero = False
+    otro = False
 
     # Procesar opciones
     if opcion == "1":
         longitud = int(input("¿Qué longitud deseas para la contraseña? (ej. 12): "))
     elif opcion == "2":
-        mayusculas = True
+        mayuscula = True
     elif opcion == "3":
-        minusculas = True
+        minuscula = True
     elif opcion == "4":
-        alfanumericos = True
+        numero = True
     elif opcion == "5":
-        simbolos = True
+        otro = True
     elif opcion == "6":
         if longitud < 4:
             print("La longitud debe ser al menos 4 para garantizar la seguridad.")
             continue
-        contraseña = generar_contraseña(longitud, mayusculas, minusculas, alfanumericos, simbolos)
+        contraseña = tucontraseña(longitud, mayuscula, minuscula, numero, otro)
         print(f"Contraseña generada: {contraseña}")
         continuar = input("¿Quieres generar otra contraseña? (s/n): ")
         if continuar.lower() != 's':
